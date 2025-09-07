@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button } from "@/components/ui/button"
@@ -12,6 +13,7 @@ import { LoginSchema, LoginValues } from '@/schema';
 import { toast } from "sonner";
 
 export function LoginForm() {
+  const router = useRouter();
   const form = useForm<LoginValues>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -21,6 +23,8 @@ export function LoginForm() {
   })
   function onSubmit(values: LoginValues) {
     toast.success("Inico de sesion exitoso")
+    router.push('/dashboard')
+
   }
   return (
     <Form {...form}>
