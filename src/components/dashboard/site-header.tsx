@@ -2,7 +2,6 @@
 
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
-import Link from "next/link";
 import { usePathname } from "next/navigation"
 import { BreadcrumbComponent } from './breadcrumb-component';
 

@@ -2,7 +2,10 @@
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, 
+  useQuery, 
+  // useQueryClient 
+} from '@tanstack/react-query';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { UpdateProductSquema, UpdateProductValues } from '@/schema';
@@ -16,11 +19,12 @@ import { Button } from '../ui/button';
 
 interface Props {
   productId: string;
-  userId?: string;
+  // userId?: string;
   setOpen?:(open:boolean) => void;
 }
 
 const fetchProduct = async (productId: string) => {
+  console.log(productId)
   const product: UpdateProductValues = {
     name: 'Broche de broche',
     brandId: '83cefa52-229c-475e-98aa-1c385d824ad4',
@@ -41,8 +45,8 @@ const fetchProduct = async (productId: string) => {
 const fetchUpdate = async (values: UpdateProductValues) => {
   return values
 }
-export const UpdateProductForm = ({ productId, userId, setOpen }:Props) => {
-  const queryClient = useQueryClient();
+export const UpdateProductForm = ({ productId, setOpen }:Props) => {
+  // const queryClient = useQueryClient();
 
   const { data: product, isLoading, error } = useQuery({
     queryKey: ['product', productId],
@@ -204,7 +208,7 @@ export const UpdateProductForm = ({ productId, userId, setOpen }:Props) => {
                 </Select>
                 <FormMessage />
                 <FormDescription>
-                  Unidad de comercialización. "Por gramo".
+                  Unidad de comercialización. Ej: Por gramo.
                 </FormDescription>
               </FormItem>
             )}
@@ -228,7 +232,7 @@ export const UpdateProductForm = ({ productId, userId, setOpen }:Props) => {
                   </SelectContent>
                 </Select>
                 <FormDescription>
-                  Unidad de compra al por mayor. "Caja" x 10 unid.
+                  Unidad de compra al por mayor. Ej: Caja x 10 unid.
                 </FormDescription>
                 <FormMessage />
               </FormItem>

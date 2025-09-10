@@ -22,6 +22,7 @@ export function RegisterForm() {
     }
   })
   function onSubmit(values: RegisterValues) {
+    console.log(values)
     toast.success("Registro exitoso")
   }
   return (

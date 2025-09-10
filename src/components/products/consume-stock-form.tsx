@@ -31,6 +31,7 @@ export const ConsumeStockForm = ({productId, setOpen}:Props) => {
   })
 
   function onSubmit(data: ConsumeStockType) {
+    console.log(data)
     toast.success("Consumo de stock registrado")
     setOpen?.(false);
   }
