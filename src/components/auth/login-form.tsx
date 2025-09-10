@@ -22,6 +22,7 @@ export function LoginForm() {
     }
   })
   function onSubmit(values: LoginValues) {
+    console.log(values)
     toast.success("Inico de sesion exitoso")
     router.push('/dashboard')
 

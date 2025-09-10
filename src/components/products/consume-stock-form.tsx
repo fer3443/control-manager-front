@@ -31,12 +31,13 @@ export const ConsumeStockForm = ({productId, setOpen}:Props) => {
   })
 
   function onSubmit(data: ConsumeStockType) {
+    console.log(data)
     toast.success("Consumo de stock registrado")
     setOpen?.(false);
   }
   return (
     <Form {...form}>
-      <form className='flex flex-col gap-4 p-4' onSubmit={form.handleSubmit(onSubmit)}>
+      <form className='flex flex-col gap-4 px-4' onSubmit={form.handleSubmit(onSubmit)}>
         <div className='grid grid-cols-2 gap-4 items-center'>
           <FormField
             control={form.control}
