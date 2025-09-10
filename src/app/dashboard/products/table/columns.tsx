@@ -9,6 +9,7 @@ import { MoreHorizontal } from "lucide-react";
 import { formatDate } from "@/utils/format-date";
 import { TableCellViewer } from "./table-cell-viewer";
 import { formatCurrency } from "@/utils";
+import { TableCellUpdate } from "@/components/products/table-cell-update";
 
 export const columns: ColumnDef<ColumnsProductsType>[] = [
   {
@@ -68,7 +69,8 @@ export const columns: ColumnDef<ColumnsProductsType>[] = [
   {
     id: "actions",
     enableHiding: false,
-    cell: () => {
+    cell: ({row}) => {
+      const item = row.original
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -79,7 +81,9 @@ export const columns: ColumnDef<ColumnsProductsType>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Opciones</DropdownMenuLabel>
-            <DropdownMenuItem>Editar</DropdownMenuItem>
+            <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+              <TableCellUpdate item={item}/>
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Eliminar</DropdownMenuItem>
           </DropdownMenuContent>
